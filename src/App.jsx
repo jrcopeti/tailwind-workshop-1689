@@ -3,6 +3,7 @@ import FormAddFriend from "./components/FormAddFriend";
 import Button from "./components/Button";
 import FormSplitBill from "./components/FormSplitBill";
 import FriendsList from "./components/FriendsList";
+import Header from "./components/Header";
 
 const initialFriends = [
   {
@@ -72,38 +73,41 @@ export default function App() {
   };
 
   return (
-    <div className="grid min-h-screen grid-cols-2 gap-x-10 p-16">
-      {/* Left Column */}
-      <div className="space-y-8">
-        <FriendsList
-          friends={friends}
-          selectedFriend={selectedFriend}
-          handleSelectionFriend={handleSelectionFriend}
-        />
-
-        {showAddFriend && <FormAddFriend handleAddFriend={handleAddFriend} />}
-
-        <Button onClick={handleShowAddFriend}>
-          {showAddFriend ? "Close" : "Add Friend"}
-        </Button>
-      </div>
-
-      {/* Right Column for Split Bill Form */}
-      <div className="flex flex-col justify-start">
-        {selectedFriend ? (
-          <FormSplitBill
+    <div className="flex flex-col gap-10 px-8 py-8 lg:px-8 lg:py-10">
+      <Header />
+      <div className="grid min-h-screen grid-cols-1 gap-y-8 lg:grid-cols-2 lg:gap-x-20">
+        {/* Left Column */}
+        <div className="space-y-8">
+          <FriendsList
+            friends={friends}
             selectedFriend={selectedFriend}
-            handleSplitBill={handleSplitBill}
-            key={selectedFriend.id}
+            handleSelectionFriend={handleSelectionFriend}
           />
-        ) : (
-          <div className="flex flex-col gap-4 rounded-lg bg-orange-50 p-8">
-            <p>Select a friend to split the bill.</p>
-            {message && (
-              <p className="font-semibold text-blue-600">{message}</p>
-            )}
-          </div>
-        )}
+
+          {showAddFriend && <FormAddFriend handleAddFriend={handleAddFriend} />}
+
+          <Button onClick={handleShowAddFriend}>
+            {showAddFriend ? "Close" : "Add Friend"}
+          </Button>
+        </div>
+
+        {/* Right Column for Split Bill Form */}
+        <div className="flex flex-col justify-start">
+          {selectedFriend ? (
+            <FormSplitBill
+              selectedFriend={selectedFriend}
+              handleSplitBill={handleSplitBill}
+              key={selectedFriend.id}
+            />
+          ) : (
+            <div className="flex flex-col gap-4 rounded-lg bg-orange-50 p-4 md:p-8">
+              <p className="text-xl">Select a friend to split the bill.</p>
+              {message && (
+                <p className="font-semibold text-blue-600">{message}</p>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ function Friend({ friend, handleSelectionFriend, selectedFriend }) {
 
   return (
     <li
-      className={`flex items-center justify-between gap-10 p-4 transition-colors duration-300 hover:bg-orange-50 ${
+      className={`flex flex-col items-center flex-nowrap w-full justify-between gap-4 p-4 transition-colors duration-300 hover:bg-orange-50 md:p-4 md:flex-row md:gap-10 ${
         isSelected ? "bg-orange-50" : ""
       }`}
     >
@@ -15,7 +15,7 @@ function Friend({ friend, handleSelectionFriend, selectedFriend }) {
         src={friend.image}
         alt={friend.name}
       />
-      <h3 className="text-xl font-bold">{friend.name}</h3>
+      <h3 className="text-lg font-bold md:text-xl">{friend.name}</h3>
 
       {friend.balance < 0 && (
         <p className="text-red-600">

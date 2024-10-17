@@ -29,7 +29,7 @@ function FormAddFriend({ handleAddFriend }) {
 
   return (
     <form
-      className="mb-6 grid grid-cols-2 gap-4 rounded-lg bg-orange-50 p-4"
+      className="mb-6 grid grid-cols-1 gap-4 rounded-lg bg-orange-50 p-4 md:grid-cols-2"
       onSubmit={handleSubmit}
     >
       <label className="font-medium">👯‍♂️ Friend name</label>
